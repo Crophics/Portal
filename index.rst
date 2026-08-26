@@ -1,14 +1,11 @@
-.. My Project documentation master file, created by
-   sphinx-quickstart on Wed Aug 26 13:48:17 2026.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-My Project documentation
+Portal
 ========================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Hi, I'm Julian - a Computer Science major at Roberts Wesleyan University,
+currently taking CSCI 2010. Soon-to-be Eagle Scout, lifelong computer enjoyer.
+
+This site is where I'll be posting assignments, notes, and project work
+for class.
 
 
 .. toctree::
