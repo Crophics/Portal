@@ -16,4 +16,5 @@ documentation for details.
    :caption: Contents:
    :hidden:
 
+   original_intelligence
    test
