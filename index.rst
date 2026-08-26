@@ -17,4 +17,3 @@ documentation for details.
    :hidden:
 
    original_intelligence
-   test

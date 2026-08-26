@@ -1,4 +1,4 @@
-Original Intelligence — Main Points
+Original Intelligence - Main Points
 ====================================
 
 For each chapter, a single sentence stating the main point,
