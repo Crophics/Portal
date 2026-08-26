@@ -9,16 +9,35 @@ for class.
 
 .. raw:: html
 
-   <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-     <img src="_static/glacierLake.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
-     <img src="_static/mountainLake.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
-     <img src="_static/waterfall.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
-     <img src="_static/yosemite.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
-     <img src="_static/pfp.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
-     <img src="_static/sunset.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
-     <img src="_static/airplane.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
-     <img src="_static/dark.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
-     <img src="_static/NYCDark.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 6px;">
+   <style>
+     .photo-grid {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       gap: 10px;
+     }
+     @media (max-width: 600px) {
+       .photo-grid {
+         grid-template-columns: repeat(2, 1fr);
+       }
+     }
+     .photo-grid img {
+       width: 100%;
+       aspect-ratio: 1 / 1;
+       object-fit: cover;
+       border-radius: 6px;
+     }
+   </style>
+
+   <div class="photo-grid">
+     <img src="_static/glacierLake.jpg">
+     <img src="_static/mountainLake.jpg">
+     <img src="_static/waterfall.jpg">
+     <img src="_static/yosemite.jpg">
+     <img src="_static/pfp.jpg">
+     <img src="_static/sunset.jpg">
+     <img src="_static/airplane.jpg">
+     <img src="_static/dark.jpg">
+     <img src="_static/NYCDark.jpg">
    </div>
 
 .. toctree::
