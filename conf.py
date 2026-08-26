@@ -27,3 +27,4 @@ exclude_patterns = ['venv', '_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'furo'
 html_static_path = ['_static']
 html_show_sourcelink = False
+html_logo = '_static/logo.avif'
