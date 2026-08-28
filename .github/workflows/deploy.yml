@@ -31,7 +31,7 @@ jobs:
           make html
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: portal_build/html
+          path: portal/_build/html
 
   deploy:
     needs: build
