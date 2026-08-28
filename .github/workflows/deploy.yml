@@ -27,10 +27,11 @@ jobs:
           pip install sphinx furo sphinx-autobuild
       - name: Build docs
         run: |
+          cd portal
           make html
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _build/html
+          path: portal_build/html
 
   deploy:
     needs: build
