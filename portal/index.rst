@@ -75,3 +75,4 @@ for class.
    :hidden:
 
    original_intelligence
+   planner

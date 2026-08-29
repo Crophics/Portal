@@ -16,6 +16,7 @@ release = '0.2'
 
 extensions = []
 
+html_extra_path = ['extra']
 templates_path = ['_templates']
 exclude_patterns = ['venv', '_build', 'Thumbs.db', '.DS_Store']
 
