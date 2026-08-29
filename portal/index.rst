@@ -67,9 +67,6 @@ for class.
      <img src="_static/yosemite.jpg">
      <img src="_static/pfp.jpg">
      <img src="_static/sunset.jpg">
-     <img src="_static/airplane.jpg">
-     <img src="_static/dark.jpg">
-     <img src="_static/NYCDark.jpg">
    </div>
 
 .. toctree::
