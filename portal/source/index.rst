@@ -74,4 +74,4 @@ for class.
    :caption: Contents:
    :hidden:
 
-   original_intelligence
+   oi
