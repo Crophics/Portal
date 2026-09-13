@@ -1,0 +1,706 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Firebase CLI + Wrangler (Cloudflare) Deploys" href="firebase-wrangler-guide.html"><link rel="prev" title="Hyprland (Lua config) + Quickshell: A Practical Guide" href="hyprland-quickshell-guide.html">
+        <link rel="prefetch" href="_static/logo.avif" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Sphinx + MyST (Markdown) + Furo Theme - Portal</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c4a56c37" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Portal</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.avif" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Portal</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="oi.html">Original Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yazi-nvim-guide.html">Yazi + Neovim: A Practical Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish-shell-guide.html">Fish Shell: Config, Functions, and Abbreviations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git-workflow-guide.html">Git Workflow: Branching, Rebasing, and Day-to-Day Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyprland-quickshell-guide.html">Hyprland (Lua config) + Quickshell: A Practical Guide</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Sphinx + MyST (Markdown) + Furo Theme</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="firebase-wrangler-guide.html">Firebase CLI + Wrangler (Cloudflare) Deploys</a><input aria-label="Toggle navigation of Firebase CLI + Wrangler (Cloudflare) Deploys" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="firebase-wrangler-guide-part1.html">Part 1 — Firebase CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firebase-wrangler-guide-part2.html">Part 2 — Wrangler / Cloudflare</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="sphinx-myst-markdown-furo-theme">
+<h1>Sphinx + MyST (Markdown) + Furo Theme<a class="headerlink" href="#sphinx-myst-markdown-furo-theme" title="Link to this heading">¶</a></h1>
+<hr class="docutils" />
+<section id="installation">
+<h2>1. Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sphinx<span class="w"> </span>myst-parser<span class="w"> </span>furo<span class="w"> </span>--break-system-packages
+</pre></div>
+</div>
+<p>Or in a venv (better for a project you’ll keep building):</p>
+<div class="highlight-fish notranslate"><div class="highlight"><pre><span></span>python -m venv .venv
+<span class="nb">source</span> .venv/bin/activate.fish
+pip install sphinx myst-parser furo
+</pre></div>
+</div>
+<p>If you go the venv route, <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>/<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> must also run from inside the activated venv.</p>
+</section>
+<hr class="docutils" />
+<section id="project-structure">
+<h2>2. Project Structure<a class="headerlink" href="#project-structure" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> sets this up. A typical split-source layout:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docs/
+├── Makefile
+├── make.bat
+├── build/
+└── source/
+    ├── conf.py          # all configuration
+    ├── index.rst        # or index.md — root doc, holds the toctree
+    ├── _static/         # custom CSS, images, logos
+    └── _templates/
+</pre></div>
+</div>
+<p>Build:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html<span class="w">          </span><span class="c1"># from the docs/ root</span>
+<span class="c1"># or explicitly:</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build
+</pre></div>
+</div>
+<p>Output lands in <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="enabling-markdown-with-myst">
+<h2>3. Enabling Markdown with MyST<a class="headerlink" href="#enabling-markdown-with-myst" title="Link to this heading">¶</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"myst_parser"</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>That’s it. Adding the extension causes all <code class="docutils literal notranslate"><span class="pre">.md</span></code> documents to be parsed as MyST — you don’t need a <code class="docutils literal notranslate"><span class="pre">source_suffix</span></code> mapping for the basic case.</p>
+<p>Both parsers coexist: <code class="docutils literal notranslate"><span class="pre">.md</span></code> files are parsed as MyST, <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files still go through the reStructuredText parser as normal. You can mix both in the same project and the same <code class="docutils literal notranslate"><span class="pre">toctree</span></code>.</p>
+<p>If you <em>do</em> want to be explicit (or you’re adding a non-standard extension), the dict form still works:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">source_suffix</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">".rst"</span><span class="p">:</span> <span class="s2">"restructuredtext"</span><span class="p">,</span>
+    <span class="s2">".md"</span><span class="p">:</span> <span class="s2">"markdown"</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="myst-syntax">
+<h2>4. MyST Syntax<a class="headerlink" href="#myst-syntax" title="Link to this heading">¶</a></h2>
+<p>MyST is CommonMark plus extensions for the things Sphinx needs — roles and directives.</p>
+<section id="directives">
+<h3>Directives<a class="headerlink" href="#directives" title="Link to this heading">¶</a></h3>
+<p>Triple-backtick fence with the directive name in braces:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>```{note}
+This renders as a Sphinx note admonition.
+<span class="sb">```</span>
+
+<span class="sb">```{warning}</span>
+<span class="sb">And this as a warning.</span>
+<span class="sb">```</span>
+
+```{code-block} python
+:linenos:
+
+def hello():
+    print("hi")
+```
+</pre></div>
+</div>
+</section>
+<section id="roles">
+<h3>Roles<a class="headerlink" href="#roles" title="Link to this heading">¶</a></h3>
+<p>Inline, with braces before backticks:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>{doc}`other-page`
+{ref}`my-label`
+{py:class}`mypackage.MyClass`
+</pre></div>
+</div>
+</section>
+<section id="toctree-in-markdown">
+<h3>Toctree in Markdown<a class="headerlink" href="#toctree-in-markdown" title="Link to this heading">¶</a></h3>
+<p>Your <code class="docutils literal notranslate"><span class="pre">index.md</span></code> (if you convert <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>):</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># My Project</span>
+
+```{toctree}
+:maxdepth: 2
+:caption: Contents
+
+installation
+usage
+api
+```
+</pre></div>
+</div>
+<p>Note the leading <code class="docutils literal notranslate"><span class="pre">:option:</span> <span class="pre">value</span></code> lines — that’s how MyST expresses what rST writes as <code class="docutils literal notranslate"><span class="pre">:maxdepth:</span> <span class="pre">2</span></code>.</p>
+</section>
+<section id="cross-reference-targets">
+<h3>Cross-reference targets<a class="headerlink" href="#cross-reference-targets" title="Link to this heading">¶</a></h3>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(my-label)=
+<span class="gu">## A header</span>
+
+Link to it: {ref}`my-label`
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="myst-optional-extensions">
+<h2>5. MyST Optional Extensions<a class="headerlink" href="#myst-optional-extensions" title="Link to this heading">¶</a></h2>
+<p>MyST ships several syntax extensions, off by default. Enable in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myst_enable_extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"colon_fence"</span><span class="p">,</span>       <span class="c1"># ::: fences as alternative to ```</span>
+    <span class="s2">"deflist"</span><span class="p">,</span>           <span class="c1"># definition lists</span>
+    <span class="s2">"linkify"</span><span class="p">,</span>           <span class="c1"># bare URLs become links</span>
+    <span class="s2">"substitution"</span><span class="p">,</span>      <span class="c1"># variable substitution</span>
+    <span class="s2">"tasklist"</span><span class="p">,</span>          <span class="c1"># - [ ] checkboxes</span>
+    <span class="s2">"dollarmath"</span><span class="p">,</span>        <span class="c1"># $inline$ and $$block$$ math</span>
+    <span class="s2">"attrs_inline"</span><span class="p">,</span>      <span class="c1"># inline attributes</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">linkify</span></code> needs an extra dependency:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>linkify-it-py
+</pre></div>
+</div>
+<section id="colon-fence">
+<h3>colon_fence<a class="headerlink" href="#colon-fence" title="Link to this heading">¶</a></h3>
+<p>Worth enabling — lets you write directives with <code class="docutils literal notranslate"><span class="pre">:::</span></code> instead of backticks, which avoids nesting headaches when a directive contains a code block:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>:::{note}
+This works, and you can put ```python blocks inside without fence conflicts.
+:::
+</pre></div>
+</div>
+<p>All MyST config variables are prefixed <code class="docutils literal notranslate"><span class="pre">myst_</span></code> — that’s the pattern to look for in the docs.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="furo-theme">
+<h2>6. Furo Theme<a class="headerlink" href="#furo-theme" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s2">"furo"</span>
+</pre></div>
+</div>
+<p>That single line is usually enough — Furo’s design goal is minimal config, and it gives you light/dark mode following the reader’s system preference, responsive layout, and search out of the box.</p>
+<p>Furo uses calendar versioning (e.g. <code class="docutils literal notranslate"><span class="pre">2025.12.19</span></code>), MIT licensed.</p>
+<section id="theme-options">
+<h3>Theme options<a class="headerlink" href="#theme-options" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"light_logo"</span><span class="p">:</span> <span class="s2">"logo-light.png"</span><span class="p">,</span>
+    <span class="s2">"dark_logo"</span><span class="p">:</span> <span class="s2">"logo-dark.png"</span><span class="p">,</span>
+    <span class="s2">"sidebar_hide_name"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"navigation_with_keys"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">"announcement"</span><span class="p">:</span> <span class="s2">"New release: 2.0.0 is out!"</span><span class="p">,</span>
+    <span class="s2">"source_repository"</span><span class="p">:</span> <span class="s2">"https://github.com/Crophics/Portal"</span><span class="p">,</span>
+    <span class="s2">"source_branch"</span><span class="p">:</span> <span class="s2">"main"</span><span class="p">,</span>
+    <span class="s2">"source_directory"</span><span class="p">:</span> <span class="s2">"docs/source/"</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">light_logo</span></code> / <code class="docutils literal notranslate"><span class="pre">dark_logo</span></code></p></td>
+<td><p>Logo per color scheme (files go in <code class="docutils literal notranslate"><span class="pre">_static/</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sidebar_hide_name</span></code></p></td>
+<td><p>Hide project name in sidebar (useful if logo says it)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">announcement</span></code></p></td>
+<td><p>Site-wide banner at top of every page; accepts HTML</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">navigation_with_keys</span></code></p></td>
+<td><p>Arrow-key page navigation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source_repository</span></code> / <code class="docutils literal notranslate"><span class="pre">source_branch</span></code> / <code class="docutils literal notranslate"><span class="pre">source_directory</span></code></p></td>
+<td><p>Powers the “Edit this page” link</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Only options documented by Furo are supported — it does <strong>not</strong> inherit the options from Sphinx’s <code class="docutils literal notranslate"><span class="pre">basic</span></code> theme (<code class="docutils literal notranslate"><span class="pre">nosidebar</span></code>, <code class="docutils literal notranslate"><span class="pre">sidebarwidth</span></code>, etc. won’t do anything).</p>
+</section>
+<section id="colors">
+<h3>Colors<a class="headerlink" href="#colors" title="Link to this heading">¶</a></h3>
+<p>Furo is built on CSS variables. Override them via <code class="docutils literal notranslate"><span class="pre">light_css_variables</span></code> / <code class="docutils literal notranslate"><span class="pre">dark_css_variables</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"light_css_variables"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"color-brand-primary"</span><span class="p">:</span> <span class="s2">"#7C4DFF"</span><span class="p">,</span>
+        <span class="s2">"color-brand-content"</span><span class="p">:</span> <span class="s2">"#7C4DFF"</span><span class="p">,</span>
+        <span class="s2">"color-admonition-background"</span><span class="p">:</span> <span class="s2">"orange"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"dark_css_variables"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"color-brand-primary"</span><span class="p">:</span> <span class="s2">"#B388FF"</span><span class="p">,</span>
+        <span class="s2">"color-brand-content"</span><span class="p">:</span> <span class="s2">"#B388FF"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>How light/dark works: Furo is light by default and switches to dark when the browser requests it via <code class="docutils literal notranslate"><span class="pre">prefers-color-scheme:</span> <span class="pre">dark</span></code>. Dark mode <strong>inherits</strong> the light-mode variable definitions and only overrides specific values — so anything you set in <code class="docutils literal notranslate"><span class="pre">light_css_variables</span></code> carries into dark unless you override it again.</p>
+<p><strong>Gotcha worth knowing:</strong> typos in the <code class="docutils literal notranslate"><span class="pre">*_css_variables</span></code> dicts are silently ignored — no error, no warning. If a color change “doesn’t work,” check your spelling first.</p>
+<p>The full variable list is in Furo’s source under <code class="docutils literal notranslate"><span class="pre">src/furo/assets/styles/variables</span></code>.</p>
+</section>
+<section id="code-block-styling">
+<h3>Code block styling<a class="headerlink" href="#code-block-styling" title="Link to this heading">¶</a></h3>
+<p>Furo doesn’t handle syntax highlighting itself — Sphinx does. Configure it with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pygments_style</span> <span class="o">=</span> <span class="s2">"default"</span>
+<span class="n">pygments_dark_style</span> <span class="o">=</span> <span class="s2">"monokai"</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-css">
+<h3>Custom CSS<a class="headerlink" href="#custom-css" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"_static"</span><span class="p">]</span>
+<span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"custom.css"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Put <code class="docutils literal notranslate"><span class="pre">custom.css</span></code> in <code class="docutils literal notranslate"><span class="pre">source/_static/</span></code>.</p>
+</section>
+<section id="per-page-tweaks">
+<h3>Per-page tweaks<a class="headerlink" href="#per-page-tweaks" title="Link to this heading">¶</a></h3>
+<p>Furo reads file-wide metadata. To hide the right-hand “Contents” sidebar on a specific page, set <code class="docutils literal notranslate"><span class="pre">hide-toc</span></code> at the page level. (It’s already hidden automatically on pages with no inner headings.)</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="a-working-conf-py">
+<h2>7. A Working <code class="docutils literal notranslate"><span class="pre">conf.py</span></code><a class="headerlink" href="#a-working-conf-py" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">project</span> <span class="o">=</span> <span class="s2">"Portal"</span>
+<span class="n">copyright</span> <span class="o">=</span> <span class="s2">"2026, Julian"</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s2">"Julian"</span>
+
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"myst_parser"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">myst_enable_extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"colon_fence"</span><span class="p">,</span>
+    <span class="s2">"deflist"</span><span class="p">,</span>
+    <span class="s2">"tasklist"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"_templates"</span><span class="p">]</span>
+<span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"_build"</span><span class="p">,</span> <span class="s2">"Thumbs.db"</span><span class="p">,</span> <span class="s2">".DS_Store"</span><span class="p">]</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s2">"furo"</span>
+<span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"_static"</span><span class="p">]</span>
+
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"sidebar_hide_name"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"navigation_with_keys"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">"light_css_variables"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"color-brand-primary"</span><span class="p">:</span> <span class="s2">"#7C4DFF"</span><span class="p">,</span>
+        <span class="s2">"color-brand-content"</span><span class="p">:</span> <span class="s2">"#7C4DFF"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="common-build-errors">
+<h2>8. Common Build Errors<a class="headerlink" href="#common-build-errors" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error</p></th>
+<th class="head"><p>Cause</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'myst_parser'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code></p></td>
+<td><p>Missing quotes — needs <code class="docutils literal notranslate"><span class="pre">[&quot;myst_parser&quot;]</span></code>, not <code class="docutils literal notranslate"><span class="pre">[myst_parser]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">import</span> <span class="pre">extension</span> <span class="pre">myst_parser</span></code></p></td>
+<td><p>Package not installed in the environment Sphinx is running from (very common with venvs, and on Read the Docs if it’s not in your requirements file)</p></td>
+</tr>
+<tr class="row-even"><td><p>Theme silently falls back to <code class="docutils literal notranslate"><span class="pre">alabaster</span></code> with no error</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">furo</span></code> isn’t installed — Sphinx doesn’t always error loudly on a missing theme</p></td>
+</tr>
+<tr class="row-odd"><td><p>Color/variable change does nothing</p></td>
+<td><p>Typo in <code class="docutils literal notranslate"><span class="pre">*_css_variables</span></code> — silently ignored by design</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Unknown</span> <span class="pre">directive</span></code></p></td>
+<td><p>Directive belongs to an extension you haven’t added to <code class="docutils literal notranslate"><span class="pre">extensions</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Run with <code class="docutils literal notranslate"><span class="pre">-W</span></code> to turn warnings into errors when you want a strict build:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-build<span class="w"> </span>-W<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="useful-extras">
+<h2>9. Useful Extras<a class="headerlink" href="#useful-extras" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Extension</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.autodoc</span></code></p></td>
+<td><p>Pull docstrings from Python source</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.napoleon</span></code></p></td>
+<td><p>Google/NumPy docstring styles</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.intersphinx</span></code></p></td>
+<td><p>Cross-link to other projects’ docs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sphinx_design</span></code></p></td>
+<td><p>Cards, grids, tabs, dropdowns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sphinx_copybutton</span></code></p></td>
+<td><p>Copy button on code blocks</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code></p></td>
+<td><p>Live-reloading dev server</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code> is the quality-of-life one:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-autobuild
+sphinx-autobuild<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build/html
+</pre></div>
+</div>
+<p>Serves on localhost and rebuilds on save.</p>
+<p>If you add <code class="docutils literal notranslate"><span class="pre">sphinx_design</span></code> alongside MyST, its docs recommend enabling <code class="docutils literal notranslate"><span class="pre">colon_fence</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"myst_parser"</span><span class="p">,</span> <span class="s2">"sphinx_design"</span><span class="p">]</span>
+<span class="n">myst_enable_extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"colon_fence"</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="reference">
+<h2>10. Reference<a class="headerlink" href="#reference" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>MyST-Parser docs: https://myst-parser.readthedocs.io/</p></li>
+<li><p>MyST config reference (all <code class="docutils literal notranslate"><span class="pre">myst_</span></code> options): https://myst-parser.readthedocs.io/en/latest/configuration.html</p></li>
+<li><p>Furo customisation: https://pradyunsg.me/furo/customisation/</p></li>
+<li><p>Sphinx docs: https://www.sphinx-doc.org/</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="firebase-wrangler-guide.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Firebase CLI + Wrangler (Cloudflare) Deploys</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="hyprland-quickshell-guide.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Hyprland (Lua config) + Quickshell: A Practical Guide</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Julian
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Sphinx + MyST (Markdown) + Furo Theme</a><ul>
+<li><a class="reference internal" href="#installation">1. Installation</a></li>
+<li><a class="reference internal" href="#project-structure">2. Project Structure</a></li>
+<li><a class="reference internal" href="#enabling-markdown-with-myst">3. Enabling Markdown with MyST</a></li>
+<li><a class="reference internal" href="#myst-syntax">4. MyST Syntax</a><ul>
+<li><a class="reference internal" href="#directives">Directives</a></li>
+<li><a class="reference internal" href="#roles">Roles</a></li>
+<li><a class="reference internal" href="#toctree-in-markdown">Toctree in Markdown</a></li>
+<li><a class="reference internal" href="#cross-reference-targets">Cross-reference targets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#myst-optional-extensions">5. MyST Optional Extensions</a><ul>
+<li><a class="reference internal" href="#colon-fence">colon_fence</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#furo-theme">6. Furo Theme</a><ul>
+<li><a class="reference internal" href="#theme-options">Theme options</a></li>
+<li><a class="reference internal" href="#colors">Colors</a></li>
+<li><a class="reference internal" href="#code-block-styling">Code block styling</a></li>
+<li><a class="reference internal" href="#custom-css">Custom CSS</a></li>
+<li><a class="reference internal" href="#per-page-tweaks">Per-page tweaks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-working-conf-py">7. A Working <code class="docutils literal notranslate"><span class="pre">conf.py</span></code></a></li>
+<li><a class="reference internal" href="#common-build-errors">8. Common Build Errors</a></li>
+<li><a class="reference internal" href="#useful-extras">9. Useful Extras</a></li>
+<li><a class="reference internal" href="#reference">10. Reference</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=10f1778b"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

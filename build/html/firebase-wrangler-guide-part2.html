@@ -1,0 +1,451 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="prev" title="Part 1 — Firebase CLI" href="firebase-wrangler-guide-part1.html">
+        <link rel="prefetch" href="_static/logo.avif" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Part 2 — Wrangler / Cloudflare - Portal</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c4a56c37" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Portal</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.avif" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Portal</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="oi.html">Original Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yazi-nvim-guide.html">Yazi + Neovim: A Practical Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish-shell-guide.html">Fish Shell: Config, Functions, and Abbreviations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git-workflow-guide.html">Git Workflow: Branching, Rebasing, and Day-to-Day Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyprland-quickshell-guide.html">Hyprland (Lua config) + Quickshell: A Practical Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-myst-furo-guide.html">Sphinx + MyST (Markdown) + Furo Theme</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="firebase-wrangler-guide.html">Firebase CLI + Wrangler (Cloudflare) Deploys</a><input aria-label="Toggle navigation of Firebase CLI + Wrangler (Cloudflare) Deploys" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="firebase-wrangler-guide-part1.html">Part 1 — Firebase CLI</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Part 2 — Wrangler / Cloudflare</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="part-2-wrangler-cloudflare">
+<h1>Part 2 — Wrangler / Cloudflare<a class="headerlink" href="#part-2-wrangler-cloudflare" title="Link to this heading">¶</a></h1>
+<section id="install-auth">
+<h2>2.1 Install &amp; Auth<a class="headerlink" href="#install-auth" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>wrangler
+<span class="c1"># or per-project (usually better):</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>wrangler
+npx<span class="w"> </span>wrangler<span class="w"> </span>--version
+
+wrangler<span class="w"> </span>login
+</pre></div>
+</div>
+<p>Wrangler v4 has been current since March 2025. It supports the Current, Active, and Maintenance versions of Node.js. On Linux it needs a distro with glibc 2.35+ — fine on CachyOS.</p>
+</section>
+<section id="configuration">
+<h2>2.2 Configuration<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h2>
+<p>Configured via <code class="docutils literal notranslate"><span class="pre">wrangler.jsonc</span></code> (recommended), <code class="docutils literal notranslate"><span class="pre">wrangler.json</span></code>, or <code class="docutils literal notranslate"><span class="pre">wrangler.toml</span></code> in the project root. JSONC is the newer recommendation; TOML still works.</p>
+<div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>// wrangler.jsonc
+{
+  "name": "my-worker",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01"
+}
+</pre></div>
+</div>
+</section>
+<section id="core-commands">
+<h2>2.3 Core Commands<a class="headerlink" href="#core-commands" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>What it does</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">dev</span></code></p></td>
+<td><p>Local dev server</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">deploy</span></code></p></td>
+<td><p>Deploy a Worker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">pages</span> <span class="pre">deploy</span> <span class="pre">&lt;dir&gt;</span></code></p></td>
+<td><p>Deploy a Pages site</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">tail</span></code></p></td>
+<td><p>Live-stream production logs</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">secret</span> <span class="pre">put</span> <span class="pre">&lt;NAME&gt;</span></code></p></td>
+<td><p>Set an encrypted secret</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">kv</span></code></p></td>
+<td><p>KV namespace operations</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">r2</span></code></p></td>
+<td><p>R2 bucket operations</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">d1</span></code></p></td>
+<td><p>D1 database operations</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pages-deploys">
+<h2>2.4 Pages Deploys<a class="headerlink" href="#pages-deploys" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wrangler<span class="w"> </span>pages<span class="w"> </span>deploy<span class="w"> </span>./dist
+wrangler<span class="w"> </span>pages<span class="w"> </span>deploy<span class="w"> </span>./dist<span class="w"> </span>--project-name<span class="w"> </span>my-site
+wrangler<span class="w"> </span>pages<span class="w"> </span>deploy<span class="w"> </span>./dist<span class="w"> </span>--branch<span class="w"> </span>preview
+</pre></div>
+</div>
+<section id="the-production-branch-gotcha">
+<h3>The production-branch gotcha<a class="headerlink" href="#the-production-branch-gotcha" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">pages</span> <span class="pre">deploy</span></code> has <strong>no <code class="docutils literal notranslate"><span class="pre">--production</span></code> flag</strong> — it never had one, in any version. Whether a deploy counts as production is decided by comparing your <code class="docutils literal notranslate"><span class="pre">--branch</span></code> value against the project’s configured production branch in Cloudflare. Match the branch name and it’s a production deploy; anything else is a preview.</p>
+</section>
+<section id="deleting-deployments">
+<h3>Deleting deployments<a class="headerlink" href="#deleting-deployments" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wrangler<span class="w"> </span>pages<span class="w"> </span>deployment<span class="w"> </span>delete<span class="w"> </span>&lt;deployment-id&gt;<span class="w"> </span>--project-name<span class="w"> </span>&lt;name&gt;
+wrangler<span class="w"> </span>pages<span class="w"> </span>deployment<span class="w"> </span>delete<span class="w"> </span>&lt;deployment-id&gt;<span class="w"> </span>--project-name<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--force
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--force</span></code> (or <code class="docutils literal notranslate"><span class="pre">-f</span></code>) skips the confirmation prompt — needed for CI.</p>
+</section>
+<section id="recent-behavior-change-worth-knowing">
+<h3>Recent behavior change worth knowing<a class="headerlink" href="#recent-behavior-change-worth-knowing" title="Link to this heading">¶</a></h3>
+<p>As of Wrangler 4.108.0, when <code class="docutils literal notranslate"><span class="pre">wrangler</span> <span class="pre">pages</span> <span class="pre">deploy</span></code> or <code class="docutils literal notranslate"><span class="pre">pages</span> <span class="pre">project</span> <span class="pre">create</span></code> is run <strong>by an AI coding agent</strong> against a brand-new, purely static project, Wrangler delegates it to Workers static assets instead of Cloudflare Pages. Accounts with existing Pages projects, human (non-agent) sessions, and projects using Pages Functions, a <code class="docutils literal notranslate"><span class="pre">_worker.js</span></code>, or a <code class="docutils literal notranslate"><span class="pre">_routes.json</span></code> are unaffected. Pass <code class="docutils literal notranslate"><span class="pre">--force</span></code> to opt out and deploy to Pages directly.</p>
+<p>Relevant if you use Claude Code on your Cloudflare projects — deploys you run yourself in the terminal behave normally.</p>
+</section>
+</section>
+<section id="secrets-environment">
+<h2>2.5 Secrets &amp; Environment<a class="headerlink" href="#secrets-environment" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wrangler<span class="w"> </span>secret<span class="w"> </span>put<span class="w"> </span>API_KEY<span class="w">          </span><span class="c1"># prompts for value, encrypted</span>
+wrangler<span class="w"> </span>secret<span class="w"> </span>list
+wrangler<span class="w"> </span>secret<span class="w"> </span>delete<span class="w"> </span>API_KEY
+</pre></div>
+</div>
+<p>Non-secret vars go in <code class="docutils literal notranslate"><span class="pre">wrangler.jsonc</span></code> under <code class="docutils literal notranslate"><span class="pre">vars</span></code>. Secrets never go in the config file.</p>
+</section>
+<section id="github-actions">
+<h2>2.6 GitHub Actions<a class="headerlink" href="#github-actions" title="Link to this heading">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy</span>
+<span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloudflare/wrangler-action@v4</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">apiToken</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.CLOUDFLARE_API_TOKEN }}</span>
+<span class="w">    </span><span class="nt">accountId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.CLOUDFLARE_ACCOUNT_ID }}</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pages deploy --project-name=example</span>
+</pre></div>
+</div>
+<p>Version notes for the action:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wrangler-action&#64;v4</span></code> defaults to Wrangler CLI v4. No input changes were needed for existing <code class="docutils literal notranslate"><span class="pre">pages</span> <span class="pre">deploy</span></code> usage when upgrading from v3.</p></li>
+<li><p>Pin to v3 if you need it: <code class="docutils literal notranslate"><span class="pre">wranglerVersion:</span> <span class="pre">&quot;3.90.0&quot;</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">v</span></code> prefix is now <strong>required</strong> — <code class="docutils literal notranslate"><span class="pre">cloudflare/wrangler-action&#64;3.x.x</span></code> is no longer valid syntax; use <code class="docutils literal notranslate"><span class="pre">&#64;v4</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;v4.x</span></code>, or <code class="docutils literal notranslate"><span class="pre">&#64;v4.x.x</span></code>.</p></li>
+</ul>
+<section id="useful-outputs">
+<h3>Useful outputs<a class="headerlink" href="#useful-outputs" title="Link to this heading">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">print deployment URL</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">DEPLOYMENT_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.deploy.outputs.deployment-url }}</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $DEPLOYMENT_URL</span>
+</pre></div>
+</div>
+<p>Also available: <code class="docutils literal notranslate"><span class="pre">command-output</span></code> and <code class="docutils literal notranslate"><span class="pre">command-stderr</span></code> for parsing full Wrangler output in later steps.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="firebase-wrangler-guide-part1.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Part 1 — Firebase CLI</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Julian
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Part 2 — Wrangler / Cloudflare</a><ul>
+<li><a class="reference internal" href="#install-auth">2.1 Install &amp; Auth</a></li>
+<li><a class="reference internal" href="#configuration">2.2 Configuration</a></li>
+<li><a class="reference internal" href="#core-commands">2.3 Core Commands</a></li>
+<li><a class="reference internal" href="#pages-deploys">2.4 Pages Deploys</a><ul>
+<li><a class="reference internal" href="#the-production-branch-gotcha">The production-branch gotcha</a></li>
+<li><a class="reference internal" href="#deleting-deployments">Deleting deployments</a></li>
+<li><a class="reference internal" href="#recent-behavior-change-worth-knowing">Recent behavior change worth knowing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#secrets-environment">2.5 Secrets &amp; Environment</a></li>
+<li><a class="reference internal" href="#github-actions">2.6 GitHub Actions</a><ul>
+<li><a class="reference internal" href="#useful-outputs">Useful outputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=10f1778b"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

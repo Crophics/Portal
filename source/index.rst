@@ -75,3 +75,9 @@ for class.
    :hidden:
 
    oi
+   yazi-nvim-guide
+   fish-shell-guide
+   git-workflow-guide
+   hyprland-quickshell-guide
+   sphinx-myst-furo-guide
+   firebase-wrangler-guide

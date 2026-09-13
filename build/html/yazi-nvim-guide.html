@@ -1,0 +1,1022 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Fish Shell: Config, Functions, and Abbreviations" href="fish-shell-guide.html"><link rel="prev" title="Original Intelligence" href="oi.html">
+        <link rel="prefetch" href="_static/logo.avif" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Yazi + Neovim: A Practical Guide - Portal</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c4a56c37" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Portal</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.avif" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Portal</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="oi.html">Original Intelligence</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Yazi + Neovim: A Practical Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fish-shell-guide.html">Fish Shell: Config, Functions, and Abbreviations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git-workflow-guide.html">Git Workflow: Branching, Rebasing, and Day-to-Day Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyprland-quickshell-guide.html">Hyprland (Lua config) + Quickshell: A Practical Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-myst-furo-guide.html">Sphinx + MyST (Markdown) + Furo Theme</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="firebase-wrangler-guide.html">Firebase CLI + Wrangler (Cloudflare) Deploys</a><input aria-label="Toggle navigation of Firebase CLI + Wrangler (Cloudflare) Deploys" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="firebase-wrangler-guide-part1.html">Part 1 — Firebase CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firebase-wrangler-guide-part2.html">Part 2 — Wrangler / Cloudflare</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="yazi-neovim-a-practical-guide">
+<h1>Yazi + Neovim: A Practical Guide<a class="headerlink" href="#yazi-neovim-a-practical-guide" title="Link to this heading">¶</a></h1>
+<p>Tailored for Arch/CachyOS with <code class="docutils literal notranslate"><span class="pre">yay</span></code>, <code class="docutils literal notranslate"><span class="pre">kitty</span></code>, and <code class="docutils literal notranslate"><span class="pre">fish</span></code>.</p>
+<hr class="docutils" />
+<section id="installation">
+<h2>1. Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<div class="highlight-fish notranslate"><div class="highlight"><pre><span></span><span class="c"># Yazi (you already have this installed)</span>
+yay -S yazi
+
+<span class="c"># Neovim (latest stable)</span>
+yay -S neovim
+
+<span class="c"># Recommended companion tools yazi/nvim lean on</span>
+yay -S ripgrep fd fzf unzip poppler ffmpeg 7zip jq imagemagick chafer 2&gt;/dev/null
+yay -S ripgrep fd fzf unzip poppler ffmpeg p7zip jq imagemagick
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ripgrep</span></code>/<code class="docutils literal notranslate"><span class="pre">fd</span></code> — fast search, used by yazi’s filter and by nvim plugins like Telescope.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">poppler</span></code>, <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code>, <code class="docutils literal notranslate"><span class="pre">imagemagick</span></code> — image/video/PDF previews in yazi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unzip</span></code>/<code class="docutils literal notranslate"><span class="pre">p7zip</span></code> — archive preview &amp; extraction in yazi.</p></li>
+</ul>
+<p>Check versions:</p>
+<div class="highlight-fish notranslate"><div class="highlight"><pre><span></span>yazi --version
+nvim --version
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="config-file-locations">
+<h2>2. Config File Locations<a class="headerlink" href="#config-file-locations" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Config root</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yazi</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~/.config/yazi/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Neovim</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~/.config/nvim/</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Yazi’s main files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/.config/yazi/
+├── yazi.toml     # general settings (layout, preview, opener rules)
+├── keymap.toml   # keybindings
+├── theme.toml    # colors/icons
+└── init.lua      # plugin loading / yazi-side Lua config
+</pre></div>
+</div>
+<p>Neovim (if you go with a Lua-based setup, which is standard now):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/.config/nvim/
+├── init.lua
+└── lua/
+    ├── config/     # options, keymaps, autocmds
+    └── plugins/    # one file per plugin (if using lazy.nvim)
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="yazi-keybinds">
+<h2>3. Yazi Keybinds<a class="headerlink" href="#yazi-keybinds" title="Link to this heading">¶</a></h2>
+<p>Yazi ships with sane defaults in <code class="docutils literal notranslate"><span class="pre">keymap.toml</span></code>. Here are the ones you’ll use constantly:</p>
+<section id="navigation">
+<h3>Navigation<a class="headerlink" href="#navigation" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">h</span></code> / <code class="docutils literal notranslate"><span class="pre">j</span></code> / <code class="docutils literal notranslate"><span class="pre">k</span></code> / <code class="docutils literal notranslate"><span class="pre">l</span></code></p></td>
+<td><p>Left (parent dir) / down / up / right (enter dir)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Arrow</span> <span class="pre">keys</span></code></p></td>
+<td><p>Same as hjkl</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">g</span></code></p></td>
+<td><p>Go to top</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p>Go to bottom</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">h</span></code></p></td>
+<td><p>Go to home directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">c</span></code></p></td>
+<td><p>Go to <code class="docutils literal notranslate"><span class="pre">~/.config</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">r</span></code></p></td>
+<td><p>Go to root <code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p>Toggle hidden files</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="selection">
+<h3>Selection<a class="headerlink" href="#selection" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Space</span></code></p></td>
+<td><p>Toggle selection on current item</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
+<td><p>Enter visual (select) mode</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
+<td><p>Enter visual (unset) mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+a</span></code></p></td>
+<td><p>Select all</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+r</span></code></p></td>
+<td><p>Invert selection</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="file-operations">
+<h3>File operations<a class="headerlink" href="#file-operations" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<td><p>Yank (copy)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p>Cut</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p>Paste</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">P</span></code></p></td>
+<td><p>Paste (overwrite)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<td><p>Move to trash (needs <code class="docutils literal notranslate"><span class="pre">trash-cli</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+<td><p>Permanently delete</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p>Create file/dir (trailing <code class="docutils literal notranslate"><span class="pre">/</span></code> = dir)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
+<td><p>Rename</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p>Toggle hidden</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">c</span></code></p></td>
+<td><p>Copy file name</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">p</span></code></p></td>
+<td><p>Copy absolute path</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">d</span></code></p></td>
+<td><p>Copy directory path</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="opening">
+<h3>Opening<a class="headerlink" href="#opening" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code> (or <code class="docutils literal notranslate"><span class="pre">l</span></code> on a file)</p></td>
+<td><p>Open with default opener</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">o</span></code></p></td>
+<td><p>Open with… (choose app)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td><p>Open with… (interactive, shows all matches)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tabs-panes">
+<h3>Tabs &amp; panes<a class="headerlink" href="#tabs-panes" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t</span></code></p></td>
+<td><p>New tab</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code>-<code class="docutils literal notranslate"><span class="pre">9</span></code></p></td>
+<td><p>Jump to tab N</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[</span></code> / <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Switch tab left/right</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+u</span></code> / <code class="docutils literal notranslate"><span class="pre">Ctrl+d</span></code></p></td>
+<td><p>Preview pane scroll up/down</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="search-filter">
+<h3>Search &amp; filter<a class="headerlink" href="#search-filter" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p>Filter current dir by name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">f</span></code> (in filter)</p></td>
+<td><p>Fuzzy filter as you type</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td><p>Search (via <code class="docutils literal notranslate"><span class="pre">fd</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p>Search (via <code class="docutils literal notranslate"><span class="pre">rg</span></code>, content search)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="misc">
+<h3>Misc<a class="headerlink" href="#misc" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+<td><p>Show help / keymap cheatsheet</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
+<td><p>Quit</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+z</span></code></p></td>
+<td><p>Suspend</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:</span></code></p></td>
+<td><p>Command mode (run a yazi command)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="customizing-yazi-keybinds">
+<h2>4. Customizing Yazi Keybinds<a class="headerlink" href="#customizing-yazi-keybinds" title="Link to this heading">¶</a></h2>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">~/.config/yazi/keymap.toml</span></code>. Example — rebind <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to always open in nvim for text files, or add a custom shell command:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[[manager.prepend_keymap]]</span>
+<span class="n">on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;C-e&gt;"</span><span class="p">]</span>
+<span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"shell 'nvim </span><span class="se">\"</span><span class="s2">$@</span><span class="se">\"</span><span class="s2">' --confirm"</span>
+<span class="n">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Open selected file(s) in Neovim"</span>
+</pre></div>
+</div>
+<p>That <code class="docutils literal notranslate"><span class="pre">&lt;C-e&gt;</span></code> example opens the hovered/selected file directly in nvim from yazi — extremely useful.</p>
+</section>
+<hr class="docutils" />
+<section id="yazi-openers-yazi-toml">
+<h2>5. Yazi Openers (<code class="docutils literal notranslate"><span class="pre">yazi.toml</span></code>)<a class="headerlink" href="#yazi-openers-yazi-toml" title="Link to this heading">¶</a></h2>
+<p>Control what app handles what filetype:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[opener]</span>
+<span class="n">edit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">'nvim "$@"'</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"Edit in Neovim"</span><span class="p">,</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">'xdg-open "$@"'</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"Open"</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="k">[open]</span>
+<span class="n">rules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">mime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"text/*"</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"edit"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"*.md"</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"edit"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">mime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"image/*"</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"open"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"edit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"open"</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">block</span> <span class="pre">=</span> <span class="pre">true</span></code> matters — it tells yazi to suspend and hand the terminal to nvim, then return to yazi when you quit.</p>
+</section>
+<hr class="docutils" />
+<section id="integrating-yazi-and-neovim">
+<h2>6. Integrating Yazi and Neovim<a class="headerlink" href="#integrating-yazi-and-neovim" title="Link to this heading">¶</a></h2>
+<p>There are two directions of integration you’ll want:</p>
+<section id="a-open-neovim-from-yazi">
+<h3>A. Open Neovim from Yazi<a class="headerlink" href="#a-open-neovim-from-yazi" title="Link to this heading">¶</a></h3>
+<p>Already covered above — either use <code class="docutils literal notranslate"><span class="pre">Enter</span></code>/default opener rules, or a dedicated keybind like <code class="docutils literal notranslate"><span class="pre">&lt;C-e&gt;</span></code>.</p>
+</section>
+<section id="b-open-yazi-from-inside-neovim-as-a-file-picker">
+<h3>B. Open Yazi from inside Neovim (as a file picker)<a class="headerlink" href="#b-open-yazi-from-inside-neovim-as-a-file-picker" title="Link to this heading">¶</a></h3>
+<p>Use the <strong><code class="docutils literal notranslate"><span class="pre">yazi.nvim</span></code></strong> plugin (by mikavilpas). This is the modern standard — better than netrw or even Telescope’s file picker for browsing.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">lazy.nvim</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- lua/plugins/yazi.lua</span>
+<span class="kr">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"mikavilpas/yazi.nvim"</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"VeryLazy"</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"folke/snacks.nvim"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="c1">-- optional, for floating window</span>
+<span class="w">  </span><span class="nv">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"&lt;leader&gt;-"</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"n"</span><span class="p">,</span><span class="w"> </span><span class="s2">"v"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="s2">"&lt;cmd&gt;Yazi&lt;cr&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Open yazi at the current file"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"&lt;leader&gt;cw"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"&lt;cmd&gt;Yazi cwd&lt;cr&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Open yazi in nvim's working directory"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"&lt;c-up&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"&lt;cmd&gt;Yazi toggle&lt;cr&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Resume the last yazi session"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nv">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">open_for_directories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">-- lets you `nvim .` and it opens yazi instead of netrw</span>
+<span class="w">    </span><span class="nv">keymaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">show_help</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;f1&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">open_for_directories</span> <span class="pre">=</span> <span class="pre">true</span></code>, running <code class="docutils literal notranslate"><span class="pre">nvim</span> <span class="pre">~/git/taskplus</span></code> (or <code class="docutils literal notranslate"><span class="pre">nvim</span> <span class="pre">.</span></code>) drops you straight into yazi instead of netrw.</p>
+<p>Inside the yazi-in-nvim floating window: <code class="docutils literal notranslate"><span class="pre">Enter</span></code> on a file opens it as a normal nvim buffer, and you’re back in your editor.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="neovim-core-keybinds-vim-motions-you-ll-actually-use">
+<h2>7. Neovim: Core Keybinds (Vim motions you’ll actually use)<a class="headerlink" href="#neovim-core-keybinds-vim-motions-you-ll-actually-use" title="Link to this heading">¶</a></h2>
+<p>Assuming default/near-default keymaps (<code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;</span></code> is usually <code class="docutils literal notranslate"><span class="pre">Space</span></code> in modern configs):</p>
+<section id="modes">
+<h3>Modes<a class="headerlink" href="#modes" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code> / <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p>Insert before/after cursor</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">I</span></code> / <code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
+<td><p>Insert at line start / end</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">o</span></code> / <code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td><p>New line below/above + insert</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code> / <code class="docutils literal notranslate"><span class="pre">V</span></code> / <code class="docutils literal notranslate"><span class="pre">Ctrl+v</span></code></p></td>
+<td><p>Visual / Visual line / Visual block</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Esc</span></code> or <code class="docutils literal notranslate"><span class="pre">jk</span></code> (if remapped)</p></td>
+<td><p>Back to normal mode</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="movement">
+<h3>Movement<a class="headerlink" href="#movement" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">j</span> <span class="pre">k</span> <span class="pre">l</span></code></p></td>
+<td><p>Left/down/up/right</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">w</span></code> / <code class="docutils literal notranslate"><span class="pre">b</span></code> / <code class="docutils literal notranslate"><span class="pre">e</span></code></p></td>
+<td><p>Next word / back word / end of word</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> / <code class="docutils literal notranslate"><span class="pre">^</span></code> / <code class="docutils literal notranslate"><span class="pre">$</span></code></p></td>
+<td><p>Line start / first non-blank / line end</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gg</span></code> / <code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p>File start / file end</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{</span></code> / <code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
+<td><p>Prev/next paragraph</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+d</span></code> / <code class="docutils literal notranslate"><span class="pre">Ctrl+u</span></code></p></td>
+<td><p>Half page down/up</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p>Jump to matching bracket</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">f{char}</span></code> / <code class="docutils literal notranslate"><span class="pre">t{char}</span></code></p></td>
+<td><p>Jump to / until char on line</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="editing">
+<h3>Editing<a class="headerlink" href="#editing" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dd</span></code></p></td>
+<td><p>Delete line</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">yy</span></code></p></td>
+<td><p>Yank (copy) line</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code> / <code class="docutils literal notranslate"><span class="pre">P</span></code></p></td>
+<td><p>Paste after/before</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">u</span></code> / <code class="docutils literal notranslate"><span class="pre">Ctrl+r</span></code></p></td>
+<td><p>Undo / redo</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p>Repeat last change</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ciw</span></code> / <code class="docutils literal notranslate"><span class="pre">diw</span></code> / <code class="docutils literal notranslate"><span class="pre">yiw</span></code></p></td>
+<td><p>Change/delete/yank inner word</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ci&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">ci(</span></code> etc.</p></td>
+<td><p>Change inside quotes/brackets</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> / <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code></p></td>
+<td><p>Indent / unindent line</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">J</span></code></p></td>
+<td><p>Join line below to current</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="search-replace">
+<h3>Search &amp; replace<a class="headerlink" href="#search-replace" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/pattern</span></code> / <code class="docutils literal notranslate"><span class="pre">?pattern</span></code></p></td>
+<td><p>Search forward/backward</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">n</span></code> / <code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p>Next/prev match</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:%s/old/new/g</span></code></p></td>
+<td><p>Replace all in file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:%s/old/new/gc</span></code></p></td>
+<td><p>Replace all with confirmation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Search word under cursor</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="windows-buffers-native">
+<h3>Windows/buffers (native)<a class="headerlink" href="#windows-buffers-native" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:sp</span></code> / <code class="docutils literal notranslate"><span class="pre">:vsp</span></code></p></td>
+<td><p>Horizontal/vertical split</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+w</span></code> then <code class="docutils literal notranslate"><span class="pre">h/j/k/l</span></code></p></td>
+<td><p>Move between splits</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+w</span></code> <code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
+<td><p>Close split</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:bn</span></code> / <code class="docutils literal notranslate"><span class="pre">:bp</span></code></p></td>
+<td><p>Next/prev buffer</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:ls</span></code></p></td>
+<td><p>List buffers</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="neovim-modern-plugin-driven-workflow">
+<h2>8. Neovim: Modern Plugin-Driven Workflow<a class="headerlink" href="#neovim-modern-plugin-driven-workflow" title="Link to this heading">¶</a></h2>
+<p>If you don’t already have a distro-config (LazyVim, NvChad, kickstart.nvim), and you want something you fully understand, <code class="docutils literal notranslate"><span class="pre">kickstart.nvim</span></code> is the best starting point — single-file, heavily commented, no magic.</p>
+<p>Core plugin stack most modern configs converge on:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Purpose</p></th>
+<th class="head"><p>Plugin</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Plugin manager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lazy.nvim</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fuzzy finder</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">telescope.nvim</span></code> (or <code class="docutils literal notranslate"><span class="pre">fzf-lua</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>File tree (if not using yazi.nvim)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvim-tree.lua</span></code> or <code class="docutils literal notranslate"><span class="pre">neo-tree.nvim</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Syntax highlighting</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvim-treesitter</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>LSP config</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvim-lspconfig</span></code> + <code class="docutils literal notranslate"><span class="pre">mason.nvim</span></code> (installs LSPs)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Autocompletion</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvim-cmp</span></code> or <code class="docutils literal notranslate"><span class="pre">blink.cmp</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Git signs/diff</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gitsigns.nvim</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Status line</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lualine.nvim</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Comment toggling</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Comment.nvim</span></code> (or built-in <code class="docutils literal notranslate"><span class="pre">gc</span></code> in nvim 0.10+)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fast motion</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">flash.nvim</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Typical Telescope keybinds (very common convention):</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;ff</span></code></p></td>
+<td><p>Find files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;fg</span></code></p></td>
+<td><p>Live grep (project-wide search, via ripgrep)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;fb</span></code></p></td>
+<td><p>Find open buffers</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;fh</span></code></p></td>
+<td><p>Search help tags</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>LSP keybinds (once <code class="docutils literal notranslate"><span class="pre">nvim-lspconfig</span></code> is set up):</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code></p></td>
+<td><p>Go to definition</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gr</span></code></p></td>
+<td><p>Find references</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">K</span></code></p></td>
+<td><p>Hover documentation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;rn</span></code></p></td>
+<td><p>Rename symbol</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;ca</span></code></p></td>
+<td><p>Code action</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[d</span></code> / <code class="docutils literal notranslate"><span class="pre">]d</span></code></p></td>
+<td><p>Prev/next diagnostic</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="a-realistic-daily-workflow">
+<h2>9. A Realistic Daily Workflow<a class="headerlink" href="#a-realistic-daily-workflow" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Open terminal (kitty) in your project root.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">yazi</span></code> — browse the tree, preview files, delete/rename/move as needed.</p></li>
+<li><p>Land on the file you want → <code class="docutils literal notranslate"><span class="pre">Enter</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;C-e&gt;</span></code> → opens in nvim.</p></li>
+<li><p>Inside nvim: <code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;-</span></code> (yazi.nvim) any time you need to jump back into yazi without losing your buffer — e.g., to grab a file into a split, or check what’s in a sibling directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;ff</span></code> / <code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;fg</span></code> (Telescope) for anything you can search by name/content instead of browsing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:qa</span></code> when done, or <code class="docutils literal notranslate"><span class="pre">Ctrl+z</span></code>/<code class="docutils literal notranslate"><span class="pre">fg</span></code> to suspend/resume if you need to shell out.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="quick-reference-cheat-sheet-print-worthy">
+<h2>10. Quick Reference Cheat-Sheet (print-worthy)<a class="headerlink" href="#quick-reference-cheat-sheet-print-worthy" title="Link to this heading">¶</a></h2>
+<p><strong>Yazi essentials:</strong> <code class="docutils literal notranslate"><span class="pre">hjkl</span></code> nav · <code class="docutils literal notranslate"><span class="pre">Space</span></code> select · <code class="docutils literal notranslate"><span class="pre">y</span></code>/<code class="docutils literal notranslate"><span class="pre">x</span></code>/<code class="docutils literal notranslate"><span class="pre">p</span></code> copy/cut/paste · <code class="docutils literal notranslate"><span class="pre">d</span></code> trash · <code class="docutils literal notranslate"><span class="pre">a</span></code> new · <code class="docutils literal notranslate"><span class="pre">r</span></code> rename · <code class="docutils literal notranslate"><span class="pre">Enter</span></code>/<code class="docutils literal notranslate"><span class="pre">o</span></code> open · <code class="docutils literal notranslate"><span class="pre">/</span></code> filter · <code class="docutils literal notranslate"><span class="pre">s</span></code>/<code class="docutils literal notranslate"><span class="pre">S</span></code> search name/content · <code class="docutils literal notranslate"><span class="pre">.</span></code> hidden files · <code class="docutils literal notranslate"><span class="pre">t</span></code> new tab · <code class="docutils literal notranslate"><span class="pre">~</span></code> help</p>
+<p><strong>Neovim essentials:</strong> <code class="docutils literal notranslate"><span class="pre">i</span></code>/<code class="docutils literal notranslate"><span class="pre">Esc</span></code> insert/normal · <code class="docutils literal notranslate"><span class="pre">dd</span></code>/<code class="docutils literal notranslate"><span class="pre">yy</span></code>/<code class="docutils literal notranslate"><span class="pre">p</span></code> cut/copy/paste line · <code class="docutils literal notranslate"><span class="pre">u</span></code>/<code class="docutils literal notranslate"><span class="pre">Ctrl+r</span></code> undo/redo · <code class="docutils literal notranslate"><span class="pre">ciw</span></code>/<code class="docutils literal notranslate"><span class="pre">di(</span></code> change/delete inside · <code class="docutils literal notranslate"><span class="pre">:%s/a/b/g</span></code> replace all · <code class="docutils literal notranslate"><span class="pre">/</span></code> search · <code class="docutils literal notranslate"><span class="pre">Ctrl+w</span> <span class="pre">hjkl</span></code> split nav · <code class="docutils literal notranslate"><span class="pre">gd</span></code>/<code class="docutils literal notranslate"><span class="pre">K</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;leader&gt;ca</span></code> LSP</p>
+</section>
+<hr class="docutils" />
+<section id="where-to-go-deeper">
+<h2>11. Where to go deeper<a class="headerlink" href="#where-to-go-deeper" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Yazi docs: https://yazi-rs.github.io/docs/</p></li>
+<li><p>Yazi keymap defaults source: check <code class="docutils literal notranslate"><span class="pre">~/.config/yazi/keymap.toml</span></code> after install (it’s fully commented)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">yazi.nvim</span></code>: https://github.com/mikavilpas/yazi.nvim</p></li>
+<li><p>kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:help</span></code> inside nvim is genuinely the best reference — <code class="docutils literal notranslate"><span class="pre">:help</span> <span class="pre">motion.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">:help</span> <span class="pre">lsp</span></code>, etc.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="fish-shell-guide.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Fish Shell: Config, Functions, and Abbreviations</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="oi.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Original Intelligence</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Julian
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Yazi + Neovim: A Practical Guide</a><ul>
+<li><a class="reference internal" href="#installation">1. Installation</a></li>
+<li><a class="reference internal" href="#config-file-locations">2. Config File Locations</a></li>
+<li><a class="reference internal" href="#yazi-keybinds">3. Yazi Keybinds</a><ul>
+<li><a class="reference internal" href="#navigation">Navigation</a></li>
+<li><a class="reference internal" href="#selection">Selection</a></li>
+<li><a class="reference internal" href="#file-operations">File operations</a></li>
+<li><a class="reference internal" href="#opening">Opening</a></li>
+<li><a class="reference internal" href="#tabs-panes">Tabs &amp; panes</a></li>
+<li><a class="reference internal" href="#search-filter">Search &amp; filter</a></li>
+<li><a class="reference internal" href="#misc">Misc</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#customizing-yazi-keybinds">4. Customizing Yazi Keybinds</a></li>
+<li><a class="reference internal" href="#yazi-openers-yazi-toml">5. Yazi Openers (<code class="docutils literal notranslate"><span class="pre">yazi.toml</span></code>)</a></li>
+<li><a class="reference internal" href="#integrating-yazi-and-neovim">6. Integrating Yazi and Neovim</a><ul>
+<li><a class="reference internal" href="#a-open-neovim-from-yazi">A. Open Neovim from Yazi</a></li>
+<li><a class="reference internal" href="#b-open-yazi-from-inside-neovim-as-a-file-picker">B. Open Yazi from inside Neovim (as a file picker)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#neovim-core-keybinds-vim-motions-you-ll-actually-use">7. Neovim: Core Keybinds (Vim motions you’ll actually use)</a><ul>
+<li><a class="reference internal" href="#modes">Modes</a></li>
+<li><a class="reference internal" href="#movement">Movement</a></li>
+<li><a class="reference internal" href="#editing">Editing</a></li>
+<li><a class="reference internal" href="#search-replace">Search &amp; replace</a></li>
+<li><a class="reference internal" href="#windows-buffers-native">Windows/buffers (native)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#neovim-modern-plugin-driven-workflow">8. Neovim: Modern Plugin-Driven Workflow</a></li>
+<li><a class="reference internal" href="#a-realistic-daily-workflow">9. A Realistic Daily Workflow</a></li>
+<li><a class="reference internal" href="#quick-reference-cheat-sheet-print-worthy">10. Quick Reference Cheat-Sheet (print-worthy)</a></li>
+<li><a class="reference internal" href="#where-to-go-deeper">11. Where to go deeper</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=10f1778b"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>
